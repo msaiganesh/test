@@ -1,0 +1,24 @@
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+public class RestTemplateExample {
+
+    public static void main(String[] args) {
+        // Create a RestTemplate instance
+        RestTemplate restTemplate = new RestTemplate();
+
+        // Set the API endpoint URL
+        String url = "http://api.example.com/data";
+
+        // Make the API call and get the response
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+
+        // Process the response
+        if (response.getStatusCodeValue() == 200) {
+            String responseBody = response.getBody();
+            System.out.println("API call succeeded with response body: " + responseBody);
+        } else {
+            System.out.println("API call failed with status code: " + response.getStatusCodeValue());
+        }
+    }
+}
